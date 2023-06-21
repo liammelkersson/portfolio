@@ -1,0 +1,205 @@
+@font-face {
+  font-family: 'ITC Garamond';
+  src: url('/assets/fonts/ITCGaramond.woff2') format('woff2'),
+    url('/assets/fonts/ITCGaramond.woff') format('woff');
+}
+
+:root {
+  --clr-orange: #e7572a;
+  --clr-sage: #666d66;
+  --clr-white: #edebe6;
+  --clr-black: #090803;
+  --clr-grey: #535154;
+
+  --background: var(--clr-sage);
+  --text-clr: var(--clr-white);
+  --highlight-clr: var(--clr-orange);
+
+  --ff-serif: 'ITC Garamond', serif;
+  --ff-sans-serif: 'neue-haas-unica', helvetica, sans-serif;
+}
+
+/* THEMES */
+.orange-theme {
+  --clr-orange: #e7572a;
+  --clr-sage: #666d66;
+  --clr-white: #edebe6;
+  --clr-black: #090803;
+  --clr-grey: #535154;
+
+  --background: var(--clr-orange);
+  --text-clr: var(--clr-black);
+  --highlight-clr: var(--clr-white);
+}
+
+.dark-theme {
+  --clr-orange: #e7572a;
+  --clr-sage: #666d66;
+  --clr-white: #edebe6;
+  --clr-black: #090803;
+  --clr-grey: #535154;
+
+  --background: var(--clr-black);
+  --text-clr: var(--clr-white);
+  --highlight-clr: var(--clr-orange);
+}
+
+.light-theme {
+  --clr-orange: #e7572a;
+  --clr-sage: #666d66;
+  --clr-white: #edebe6;
+  --clr-black: #090803;
+  --clr-grey: #535154;
+
+  --background: var(--clr-white);
+  --text-clr: var(--clr-black);
+  --highlight-clr: var(--clr-orange);
+}
+
+/* BODY */
+body {
+  /* width: 100vw;
+  height: 100vh; */
+
+  background-color: var(--background);
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 3fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+
+  grid-template-areas:
+    'header-title header-menu'
+    'content-intro .'
+    'slider slider';
+}
+
+/* HEADER TITLE ("LIAM MELKERSSON DESINER – DEVELOPER") */
+.header-title {
+  grid-area: header-title;
+}
+
+.header-title-text {
+  font-family: var(--ff-sans-serif);
+  color: var(--text-clr);
+
+  font-size: 5rem;
+  line-height: 5.5rem;
+  font-weight: 500;
+
+  margin-left: 1rem;
+  margin-top: 1rem;
+
+  transition: background-color 300ms ease-out;
+}
+
+.header-title-text:hover {
+  filter: opacity(80%);
+  cursor: pointer;
+}
+
+/* NAVIGATION ('About','Projects','Contact')  */
+.header-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+  margin-right: 1rem;
+  margin-top: 2rem;
+}
+
+.menu-link {
+  font-family: var(--ff-serif);
+  color: var(--text-clr);
+
+  font-size: 4rem;
+  line-height: 3.25rem;
+  font-weight: 400;
+
+  text-decoration: none;
+}
+
+.menu-link:hover {
+  text-decoration: line-through;
+  cursor: pointer;
+}
+
+/* INTRO TEXT (Hi, I'm Liam...) */
+.intro-text {
+  width: 33vw;
+  margin-left: 1.3rem;
+  grid-area: content-intro;
+}
+
+.introduction {
+  font-family: var(--ff-sans-serif);
+  color: var(--text-clr);
+  font-size: 1.5vw;
+  font-weight: 300;
+  font-style: normal;
+}
+
+/* SLIDER */
+.slider-animation {
+  animation-name: slider-animation;
+  animation-duration: 1s;
+  animation-timing-function: cubic-bezier(0.52, 0.15, 0, 1);
+  animation-iteration-count: 1;
+}
+
+@keyframes slider-animation {
+  0% {
+    transform: translateY(30vw);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.slider {
+  height: 20rem;
+  width: auto;
+  margin: 0;
+  margin-top: -4rem;
+  margin-bottom: 1rem;
+  bottom: 0;
+  position: relative;
+  display: grid;
+  grid-area: slider;
+  place-items: center;
+  overflow: hidden;
+  margin-left: 1rem;
+}
+
+.slide-track {
+  display: flex;
+  width: calc(20rem * 12);
+  /*500px * total number of photos */
+  animation: scroll 30s linear infinite;
+  padding-top: 1rem;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(calc(-30rem * 6));
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.slide {
+  height: 20rem;
+  width: 20rem;
+  display: flex;
+  align-items: center;
+  padding: 0.4rem;
+}
+
+.slide-img {
+  width: 100%;
+  box-shadow: 2px 1px 43px -19px rgba(0, 0, 0, 0.4);
+  -webkit-box-shadow: 2px 1px 43px -19px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: 2px 1px 43px -19px rgba(0, 0, 0, 0.4);
+}
